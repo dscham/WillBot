@@ -9,5 +9,4 @@ public class WillBotApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WillBotApplication.class, args);
 	}
-
 }
