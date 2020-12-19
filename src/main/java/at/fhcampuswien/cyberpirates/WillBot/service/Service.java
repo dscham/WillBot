@@ -1,7 +1,7 @@
 package at.fhcampuswien.cyberpirates.WillBot.service;
 
 import at.fhcampuswien.cyberpirates.WillBot.market.IMarket;
-import at.fhcampuswien.cyberpirates.WillBot.market.willhaben.WillHabenMarket;
+import at.fhcampuswien.cyberpirates.WillBot.market.willhaben.WillhabenMarket;
 import at.fhcampuswien.cyberpirates.WillBot.objects.Query;
 import at.fhcampuswien.cyberpirates.WillBot.objects.Result;
 
@@ -13,7 +13,7 @@ public class Service {
     List<IMarket> markets = new ArrayList<>();
 
     Service() {
-        markets.add(new WillHabenMarket());
+        markets.add(new WillhabenMarket());
     }
 
 
