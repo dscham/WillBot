@@ -1,8 +1,11 @@
 package at.fhcampuswien.cyberpirates.WillBot.objects;
 
+import lombok.Data;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class Query {
 
     private int postCode;
