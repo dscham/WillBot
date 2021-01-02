@@ -15,7 +15,6 @@ public class WillhabenMarket implements IMarket {
 
     public static void main(String[] args) throws Exception {
 
-        List<WebElement> searchPageResults;
         List<String> allLinkText = new ArrayList<>();
 
         System.setProperty("webdriver.chrome.driver", "C:\\webdrivers\\chromedriver.exe"); //path at the local connection
@@ -25,6 +24,8 @@ public class WillhabenMarket implements IMarket {
         driver.manage().window().maximize();
         driver.findElement(By.xpath("//*[@class='didomi-components-button didomi-button didomi-dismiss-button didomi-" +
                 "components-button--color didomi-button-highlight highlight-button']")).click(); //close the cookies pop-up
+
+        List<WebElement> searchPageResults;
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         Thread.sleep(500);
@@ -44,17 +45,22 @@ public class WillhabenMarket implements IMarket {
                 js.executeScript("window.scrollBy(1600,1800)","");
                 js.executeScript("window.scrollBy(1800,2100)","");
             }
+
             searchPageResults = driver.findElements(By.xpath("//div[@class='Box-wfmb7k-0 ResultListAdRowLayout___StyledBox-sc" +
-                    "-1rmys2w-0 iRWwJP gnPcbh']/div[@class='Box-wfmb7k-0 hkyQgZ']/a"));
+                  "-1rmys2w-0 iRWwJP gnPcbh']/div[@class='Box-wfmb7k-0 hkyQgZ']/a"));
 
-            for (WebElement link: searchPageResults) {
-                allLinkText.add(link.getText());
+            for (WebElement link: searchPageResults) { //getting href link for each real estate
+                allLinkText.add(link.getAttribute("href"));
             }
-        }
 
+            /*for (WebElement link: searchPageResults) {
+                allLinkText.add(link.getText());
+            }*/
+        }
         for (String eachLinkText : allLinkText){ //print out names of the immo
             System.out.println(eachLinkText);
         }
+        driver.close();
     }
 
     @Override
