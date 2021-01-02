@@ -6,6 +6,7 @@ import at.fhcampuswien.cyberpirates.WillBot.objects.Result;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,11 @@ public class WillhabenMarket implements IMarket {
 
         List<String> allLinkText = new ArrayList<>();
 
-        System.setProperty("webdriver.chrome.driver", "C:\\webdrivers\\chromedriver.exe"); //path at the local connection
-        WebDriver driver = new ChromeDriver();
+        //WebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); //keine Oberfläche nur der Code läuft im Hintergrund
+        WebDriver driver = new ChromeDriver(options);
+
         driver.get("https://www.willhaben.at/iad/immobilien/mietwohnungen/mietwohnung-angebote?sfId=" +
                 "3800c179-a691-4579-b182-97f95d41d407&isNavigation=true&page=1&rows=25"); //connection to the website
         driver.manage().window().maximize();
@@ -34,7 +38,7 @@ public class WillhabenMarket implements IMarket {
         js.executeScript("window.scrollBy(1600,1800)","");
         js.executeScript("window.scrollBy(1800,2100)","");
 
-        for (int i = 1; i <= 2; i++) { //iterate over pages
+        for (int i = 1; i <= 5; i++) { //iterate over pages
 
             if (i > 1) {
                 driver.findElement(By.xpath("//a[@class='Button__ButtonContainer-sc-3uaafx-0 RVfyr Pagination__PaginationButton-zvrf30-1 Pagination__" +
