@@ -16,7 +16,6 @@ public class Service {
         markets.add(new WillhabenMarket());
     }
 
-
     List<Result> getResult(Query query) {
         return markets.stream()
                 .map(market -> market.getResultForQuery(query))
