@@ -3,7 +3,9 @@ package at.fhcampuswien.cyberpirates.WillBot.market;
 import at.fhcampuswien.cyberpirates.WillBot.objects.Query;
 import at.fhcampuswien.cyberpirates.WillBot.objects.Result;
 
+import java.util.List;
+
 public interface IMarket {
 
-    public Result getResultForQuery(Query query);
+    List<Result> getResultsForQuery(Query query);
 }

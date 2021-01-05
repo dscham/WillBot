@@ -1,16 +1,19 @@
 package at.fhcampuswien.cyberpirates.WillBot.objects;
 
+import lombok.Data;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class Result {
 
-    private int postCode;
-    private boolean buy;
-    private  Map<String,String> others = new HashMap<>();
-    private  DoubleRange price = new DoubleRange();
-    private  DoubleRange livingArea = new DoubleRange();
-    private  IntegerRange roomCount = new IntegerRange();
-
-
+    private String href;
+    private String title;
+    private String postCode;
+    private String buy;
+    private String price;
+    private String livingArea;
+    private String roomCount;
+    private String provider;
 }
