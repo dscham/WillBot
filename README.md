@@ -9,6 +9,6 @@ Once downloaded, move the chromedriver.exe from the ZIP into a directory that's 
 f.e. in Windows, move it to C:\Windows\System32
 
 If you just cloned the project you will need to import Gradle configs before you can build/run the project.
-Once you ran WillBotApplication.java with IntelliJ you can access the UI with a Browser under [localhost:8080/willbot]
+Once you ran WillBotApplication.java with IntelliJ you can access the UI with a Browser under [http://localhost:8080/willbot]
 
 If you want to use the API directly you can look at WillBotController.java to see the available paramters and HTTP methods.
