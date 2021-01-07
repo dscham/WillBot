@@ -23,12 +23,14 @@
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
+            font-size: 12px;
         }
 
         td, th {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
+            font-size: 12px;
         }
 
         tr:nth-child(even) {
@@ -64,15 +66,15 @@
 </head>
 <body>
 
-<h3>Eingabe:</h3>
-<p>
+<h3>Suchanfrage:</h3>
+<p id="input">
     Preis* von <input id="pfrom" type='number'>  bis <input id="pto" type='number'>
     <br/>
     <br/>
     Fläche von <input id="afrom" type='number'>  bis <input id="ato" type='number'>
     <br/>
     <br/>
-    Zimmeranzahl:<input id="ramount" type='number'>
+    Zimmeranzahl:<input id="rcount" type='number'>
     <br/>
     <br/>
     PLZ:* <input id="plz" type='number'>
@@ -84,6 +86,8 @@
     <input type="checkbox" id="immowelt" name="immowelt">
     <label for="immowelt">Immowelt</label>
 
+</p>
+<p id="buttons">
 <br/>
     <br/>
     <button id="search">search</button>
@@ -91,7 +95,7 @@
     <br/>
 </p>
 
-<h3>Ausgabe:</h3>
+<h3>Ergebnis:</h3>
 <p>
 
 <table id="table">

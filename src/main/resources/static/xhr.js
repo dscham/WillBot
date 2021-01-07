@@ -1,5 +1,7 @@
 const searchBtn = document.getElementById('search');
 const resetBtn = document.getElementById('reset');
+const input = document.getElementById('input');
+
 
 
 const getData = () => {
@@ -7,6 +9,10 @@ const getData = () => {
     var plz = document.getElementById('plz').value;
     var pricefrom = document.getElementById('pfrom').value;
     var priceto = document.getElementById('pto').value;
+
+    var areafrom = document.getElementById('afrom').value;
+    var areato = document.getElementById('ato').value;
+    var roomCount = document.getElementById('rcount').value;
 
     console.log('Searchbutton clicked');
     const xhr = new XMLHttpRequest();
@@ -29,36 +35,42 @@ const getData = () => {
                 console.log('Invalid Input');
             } else {
 
+                var output = [];
+
+                for (var i = 0; i < data.length; i++) {
+                    output.push(data[i].href);
+                    output.push(data[i].title);
+                    output.push(data[i].postCode);
+                    output.push(data[i].buy);
+                    output.push(data[i].price);
+                    output.push(data[i].livingArea);
+                    output.push(data[i].roomCount);
+                    output.push(data[i].provider);
+                }
+
                 var result = [];
 
 
-                console.log(data.length);
+                var i = 0;
+                var r = 0;
 
-                for (var i = 0; i < data.length; i++) {
-                    result.push(data[i].href);
-                    result.push(data[i].title);
-                    result.push(data[i].postCode);
-                    result.push(data[i].buy);
-                    result.push(data[i].price);
-                    result.push(data[i].livingArea);
-                    result.push(data[i].roomCount);
-                    result.push(data[i].provider);
+
+                while(i < output.length) {
+                    result[r] = new Array(8);
+                    for(j = 0; j < 8; j++){
+                        result[r][j] = output[i];
+                        i++;
+                    }
+                    r++;
                 }
 
+                var columnCount = result[0].length;
 
-                console.log('Daten gefunden');
-                console.log(data)
-                console.log(result);
-
-
-                var count = 0;
-
-                while (count <= result.length) {
+                for (var i = 1; i < result.length; i++) {
                     var row = table.insertRow(-1);
-                    for (var i = 0; i < 8; i++) {
+                    for (var j = 0; j < columnCount; j++) {
                         var cell = row.insertCell(-1);
-                        cell.innerHTML = result[count];
-                        count++;
+                        cell.innerHTML = result[i][j];
                     }
                 }
             }
