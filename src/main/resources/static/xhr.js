@@ -1,6 +1,6 @@
 const searchBtn = document.getElementById('search');
 const resetBtn = document.getElementById('reset');
-const input = document.getElementById('input');
+//const input = document.getElementById('input');
 
 
 const getData = () => {
@@ -16,16 +16,13 @@ const getData = () => {
 
     /*
     var provider = document.querySelectorAll('input[name="provider"]');
-
     var willhaben = true;
     var immowelt = false;
-
     if (provider[0].checked === true) {
             willhaben = true;
     }else{
         willhaben = false;
     }
-
     if (provider[1].checked === true) {
         immowelt = true;
     }else{
