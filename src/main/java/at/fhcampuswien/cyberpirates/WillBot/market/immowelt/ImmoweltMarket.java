@@ -21,6 +21,7 @@ public class ImmoweltMarket implements IMarket {
     private static final String RENT_URL = "https://www.immowelt.at/liste/wien/wohnungen/mieten";
     private static final String BUY_URL = "https://www.immowelt.at/liste/wien/wohnungen/kaufen";
 
+    //functionality of methods is the same as described in the class "WillhabenMarket"
     @Override
     public List<Result> getResultsForQuery(Query query) {
         System.out.println("Immowelt: Scraping...");

@@ -26,6 +26,7 @@ public class WillhabenMarket implements IMarket {
     public List<Result> getResultsForQuery(Query query) {
         System.out.println("Willhaben: Scraping...");
 
+        //loop used to go through the pages on the specific website
         List<Integer> helper = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             helper.add(i);
@@ -43,6 +44,7 @@ public class WillhabenMarket implements IMarket {
         pageOptions.addArguments("--headless"); // Selenium runs Chrome in background, --headless = no window
         WebDriver page = new ChromeDriver(pageOptions);
 
+        //to get the specific page, parameters need to be added to the original website
         Map<String, String> params = new HashMap<>();
         params.put("sfId", "3800c179-a691-4579-b182-97f95d41d407");
         params.put("isNavigation", "true");
@@ -68,13 +70,14 @@ public class WillhabenMarket implements IMarket {
             params.put("NO_OF_ROOMS_BUCKET", query.getRoomCount().getTo() + "X" + query.getRoomCount().getTo());
         }
 
-        // Open website
+        // if statement to either get data from buy or rent website
         if (query.getBuy() != null && query.getBuy()) {
             page.get(BUY_URL + URLUtil.paramMapToQueryString(params));
         } else {
             page.get(RENT_URL + URLUtil.paramMapToQueryString(params));
         }
 
+        //once a website is opened, this thread statement allows the code to wait 0,5 seconds before it does anything else
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
@@ -82,6 +85,8 @@ public class WillhabenMarket implements IMarket {
         }
 
         System.out.println("Page " + pageNumber + ": Consent waiting...");
+        /* since Willhaben has a Pop-up window where cookies need to be accepted, with this function once the website is
+           opened, the button will be automatically pressed so the code can further do the work we want */
         List<WebElement> cookieConsent =
                 page.findElements(By.xpath("//*[@class='didomi-components-button didomi-button didomi-dismiss-button didomi-" +
                         "components-button--color didomi-button-highlight highlight-button']")); //close the cookies pop-up
@@ -115,6 +120,9 @@ public class WillhabenMarket implements IMarket {
         return results;
     }
 
+    /* since Willhaben is a dynamic website written in a javascipt we have to scroll through it to get all elements,
+       otherwise the output would be only 5 results per page. This way we can enable the programme to jump every 300
+       pixel until the end to grab every real estate that can be found on the website   */
     private void scrollPage(WebDriver driver, int page) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         Long pos = (Long) js.executeScript("return window.pageYOffset;");
@@ -129,6 +137,9 @@ public class WillhabenMarket implements IMarket {
         System.out.println("Page " + page + ": Scrolling done.");
     }
 
+    /* this method allows us to scrape the information from the website which is being scrolled through like title of the
+       the post, size, room count, price and a link so the user is not required to search it but can simply press the link
+       and the website of the specific real estate will be automatically opened */
     private Result scrapeInfo(WebElement element, Query query) {
         Result result = new Result();
 
