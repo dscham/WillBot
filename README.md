@@ -5,6 +5,10 @@ The main functionality of this project is crawling through the websites (in our 
 data we would like to see. Scope of this project is to scrape basic information of each real estate based on the requirement person using this 
 bot chooses (specific price, size, room count).
 
+Person opens the website and chooses the specific parameters for a real estate that should be searched for. After that the programme starts running
+and searching for real estates with the specific expectations. Once the programme is done, the output should be a list of flats/houses with all the
+information needed.
+
 ## Instructions for running the Project
 We used Selenium to scrape the websites for the search results.
 This is why you'll need to have Google Chrome installed and dowload the chromedriver for your Chrome version from [https://sites.google.com/a/chromium.org/chromedriver/downloads]
