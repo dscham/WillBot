@@ -1,0 +1,53 @@
+h1 {
+    font-family: arial, sans-serif;
+    text-align: center;
+
+}
+
+h3 {
+    font-family: arial, sans-serif;
+    text-align: center;
+
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 12px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+p {
+    font-family: arial, sans-serif;
+    font-size: 12px;
+    text-align: center;
+}
+
+input {
+    font-family: arial, sans-serif;
+    width: 70px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+button {
+    color: black;
+
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    width: 100px;
+}
