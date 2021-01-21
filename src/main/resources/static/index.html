@@ -2,67 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>Willbot</title>
-    <script src="xhr.js" defer></script>
-
-
-    <style>
-        h1{
-            font-family: arial, sans-serif;
-            text-align: center;
-
-        }
-
-        h3{
-            font-family: arial, sans-serif;
-            text-align: center;
-
-        }
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-            font-size: 12px;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-            font-size: 12px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-
-        p{
-            font-family: arial, sans-serif;
-            font-size: 12px;
-            text-align: center;
-        }
-
-        input{
-            font-family: arial, sans-serif;
-            width: 70px;
-            box-sizing: border-box;
-            font-size: 12px;
-        }
-        button {
-            color: black;
-            padding: 5px 5px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 12px;
-            width: 65px;
-        }
-
-
-
-    </style>
-
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
@@ -78,20 +20,11 @@
     <br/>
     <br/>
     PLZ:* <input id="plz" type='number'>
-    <!--
-    <br/>
-    <br/>
-    <input type="checkbox" id="willhaben" name="provider"
-           checked>
-    <label for="willhaben">Willhaben</label>
-    <input type="checkbox" id="immowelt" name="provider">
-    <label for="immowelt">Immowelt</label> -->
-
 </p>
 <p id="buttons">
     <br/>
-    <button id="search">search</button>
-    <button id="reset">reset</button>
+    <button id="search">Suchen</button>
+    <button id="reset">Zurücksetzen</button>
     <br/>
 </p>
 
@@ -99,19 +32,24 @@
 <p>
 
 <table id="table">
-    <thead>
-    <tr>
-        <th>Link</th>
-        <th>Titel</th>
-        <th>PLZ</th>
-        <th>Kauf</th>
-        <th>Preis</th>
-        <th>Fläche</th>
-        <th>Zimmer</th>
-        <th>Anbieter</th>
-    </tr>
+    <thead id="table_header">
+        <tr>
+            <th>Link</th>
+            <th>Titel</th>
+            <th>PLZ</th>
+            <th>Kauf</th>
+            <th>Preis</th>
+            <th>Fläche</th>
+            <th>Zimmer</th>
+            <th>Anbieter</th>
+        </tr>
     </thead>
-    <tbody id="output"></tbody>
+    <tr id="loading_row" hidden="true">
+        <td id="loading_message" colspan="8" style="text-align: center"></td>
+    </tr>
+    <tbody id="output">
+
+    </tbody>
 </table>
 </body>
 </html>
