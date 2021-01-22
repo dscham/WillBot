@@ -59,13 +59,29 @@
             width: 65px;
         }
 
+        .loader {
+            position: absolute;
+            left: 49%;
+            border: 10px solid #f3f3f3; /* Light grey */
+            border-top: 10px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
 
 
     </style>
 
 </head>
 <body>
-
+<!--Fields for Input values -->
 <h3>Suchanfrage:</h3>
 <p id="input">
     Preis* von <input id="pfrom" type='number'>  bis <input id="pto" type='number'>
@@ -78,15 +94,6 @@
     <br/>
     <br/>
     PLZ:* <input id="plz" type='number'>
-    <!--
-    <br/>
-    <br/>
-    <input type="checkbox" id="willhaben" name="provider"
-           checked>
-    <label for="willhaben">Willhaben</label>
-    <input type="checkbox" id="immowelt" name="provider">
-    <label for="immowelt">Immowelt</label> -->
-
 </p>
 <p id="buttons">
     <br/>
@@ -95,6 +102,7 @@
     <br/>
 </p>
 
+<!--Table for the output -->
 <h3>Ergebnis:</h3>
 <p>
 
@@ -113,5 +121,28 @@
     </thead>
     <tbody id="output"></tbody>
 </table>
+<!--Loader, visible while seachring-->
+<br/>
+<br/>
+<br/>
+<div class="loader" id="loader" style="display:none;"></div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+<!--
+<br/>
+<br/>
+<input type="checkbox" id="willhaben" name="provider"
+       checked>
+<label for="willhaben">Willhaben</label>
+<input type="checkbox" id="immowelt" name="provider">
+<label for="immowelt">Immowelt</label> -->
