@@ -21,7 +21,8 @@ const getData = () => {
         alert("Bitte füllen Sie alle benötigten Felder aus ");
         searchBtn.disabled = false;
     } else {
-        const url = 'http://localhost:8080/willbot/api/request?postCode=' + plz + '&priceTo=' + priceto + '&priceFrom=' + pricefrom;
+        const url = 'http://localhost:8080/willbot/api/request?postCode=' + plz + '&priceFrom=' + pricefrom + '&priceTo=' + priceto
+            + '&areaFrom=' + areafrom + '&areaTo=' + areato + '&roomCountFrom=' + roomCount + '&roomCountTo=' + roomCount;
 
         const xhr = new XMLHttpRequest();
         xhr.open('GET', url);
@@ -60,34 +61,17 @@ const getData = () => {
                     r++;
                 }
 
-                let c = 0;
-
                 if (result.length === 0) {
                     alert('Keine passende Ergebnisse gefunden');
                 } else {
                     let columnCount = result[0].length;
                     for (let i = 1; i < result.length; i++) {
-                        if (result[i][columnCount - 2] < roomCount) {
-                            console.log('roomcount filtered');
-                        } else {
-                            if(result[i][columnCount - 3] < areafrom){
-                                console.log('areafrom filtered');
-                            }else {
-                                if(result[i][columnCount - 3] > areato){
-                                    console.log('areato filtered');
-                                }else {
-                                    let row = table.insertRow(-1);
-                                    c++;
-                                    for (let j = 0; j < columnCount; j++) {
-                                        let cell = row.insertCell(-1);
-                                        cell.innerHTML = result[i][j];
-                                    }
-                                }
-                            }
+                        let row = table.insertRow(-1);
+                        for (let j = 0; j < columnCount; j++) {
+                            let cell = row.insertCell(-1);
+                            cell.innerHTML = result[i][j];
                         }
                     }
-                } if(c === 0) {
-                    alert('Keine passenden Ergebnisse gefunden');
                 }
                 isLoading = false;
                 loadingMessage.textContent = '';
